@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laboratorio di Produzione Contenuti Web — Blocco 1</title>
+  <style>
+    :root {
+      --bg: #0f1117;
+      --surface: #1a1d27;
+      --surface2: #22263a;
+      --accent: #7c6af7;
+      --accent2: #f7c948;
+      --text: #e8eaf6;
+      --muted: #8b8fa8;
+      --border: #2d3250;
+      --block1: #7c6af7;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Georgia', serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    header {
+      padding: 3.5rem 2rem 3rem;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(180deg, #12152a 0%, var(--bg) 100%);
+    }
+
+    .tag {
+      display: inline-block;
+      font-family: 'Courier New', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 0.25rem 0.9rem;
+      border-radius: 2px;
+      margin-bottom: 1.6rem;
+    }
+
+    h1 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: normal;
+      line-height: 1.15;
+      margin: 0 auto 0.9rem;
+      letter-spacing: -0.01em;
+    }
+
+    .subtitle {
+      font-family: 'Courier New', monospace;
+      font-size: 0.8rem;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+    }
+
+    .docent {
+      font-family: 'Courier New', monospace;
+      font-size: 0.75rem;
+      color: var(--accent);
+      margin-top: 0.8rem;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    .philosophy {
+      background: var(--surface);
+      border-left: 3px solid var(--accent);
+      padding: 1.5rem 2rem;
+      margin-bottom: 3rem;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .philosophy p {
+      font-style: italic;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: var(--text);
+    }
+
+    .philosophy strong { color: var(--accent2); font-style: normal; }
+
+    .block-section { margin-bottom: 3rem; }
+
+    .block-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .block-badge {
+      font-family: 'Courier New', monospace;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding: 0.3rem 0.8rem;
+      border-radius: 2px;
+      color: var(--bg);
+      font-weight: bold;
+      background: var(--block1);
+    }
+
+    .block-title { font-size: 1.3rem; font-weight: normal; color: var(--text); }
+    .block-hours { font-family: 'Courier New', monospace; font-size: 0.8rem; color: var(--muted); margin-left: auto; }
+
+    .lessons-grid { display: grid; gap: 0.75rem; }
+
+    .lesson-card {
+      display: flex;
+      align-items: stretch;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s ease;
+      overflow: hidden;
+    }
+
+    .lesson-card:hover {
+      background: var(--surface2);
+      border-color: var(--accent);
+      transform: translateX(3px);
+    }
+
+    .lesson-card:hover .lesson-arrow { color: var(--accent); }
+
+    .lesson-num {
+      font-family: 'Courier New', monospace;
+      font-size: 0.85rem;
+      font-weight: bold;
+      min-width: 3.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--surface2);
+      color: var(--block1);
+      border-right: 1px solid var(--border);
+    }
+
+    .lesson-content { padding: 1rem 1.25rem; flex: 1; }
+    .lesson-title { font-size: 1rem; font-weight: normal; margin-bottom: 0.25rem; }
+    .lesson-desc { font-size: 0.82rem; color: var(--muted); font-family: 'Courier New', monospace; }
+
+    .lesson-arrow {
+      display: flex;
+      align-items: center;
+      padding: 0 1rem;
+      color: var(--border);
+      font-size: 1.2rem;
+      transition: color 0.2s;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid var(--border);
+      font-family: 'Courier New', monospace;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="tag">Dipartimento di Scienze della Comunicazione, Studi Umanistici e Internazionali · UniUrb</div>
+  <h1>Laboratorio di Produzione Contenuti Web</h1>
+  <p class="subtitle">Corso di Laurea in Informazione, Media, Pubblicità (L-20) · A.A. 2025/2026 · 36 ore · 6 CFU</p>
+  <p class="docent">Giada Marino</p>
+</header>
+
+<main>
+
+  <div class="philosophy">
+    <p><strong>Decostruire per costruire.</strong> Prima si impara a leggere le narrative esistenti — usando le 5W+H come griglia analitica e il concetto di framing (Lakoff, 2023) come chiave interpretativa — poi se ne produce una propria, utilizzando l'intelligenza artificiale come strumento di analisi e il formato lungo come output finale.</p>
+  </div>
+
+  <div class="block-section">
+    <div class="block-header">
+      <span class="block-badge">Blocco 1</span>
+      <span class="block-title">Fondamenta</span>
+      <span class="block-hours">9 ore · 3 lezioni</span>
+    </div>
+    <div class="lessons-grid">
+
+      <a href="lezioni/lezione-01.html" class="lesson-card">
+        <div class="lesson-num">01</div>
+        <div class="lesson-content">
+          <div class="lesson-title">Le narrative e il framing</div>
+          <div class="lesson-desc">Lakoff · Frame come circuiti neurali · Reframing · Economia dell'attenzione</div>
+        </div>
+        <div class="lesson-arrow">→</div>
+      </a>
+
+      <a href="lezioni/lezione-02.html" class="lesson-card">
+        <div class="lesson-num">02</div>
+        <div class="lesson-content">
+          <div class="lesson-title">Le 5W+H come strumento di analisi</div>
+          <div class="lesson-desc">Griglia 5W+H · Frame e omissioni · Analisi comparata in aula</div>
+        </div>
+        <div class="lesson-arrow">→</div>
+      </a>
+
+      <a href="lezioni/lezione-03.html" class="lesson-card">
+        <div class="lesson-num">03</div>
+        <div class="lesson-content">
+          <div class="lesson-title">L'AI come strumento e i formati del progetto</div>
+          <div class="lesson-desc">Gemini · Prompt 5W+H · Articolo · Newsletter · Podcast · Esercitazione individuale</div>
+        </div>
+        <div class="lesson-arrow">→</div>
+      </a>
+
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  Laboratorio di Produzione Contenuti Web · UniUrb · A.A. 2025/2026
+</footer>
+
+</body>
+</html>
