@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lezione 2 — Le 5W+H come strumento di analisi</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/theme/black.min.css">
+  <style>
+    :root {
+      --accent: #7c6af7;
+      --accent2: #f7c948;
+      --teal: #4ecdc4;
+      --muted: #8b8fa8;
+      --surface: #1e2235;
+    }
+    .reveal { font-family: 'Georgia', serif; font-size: 30px; }
+    .reveal h1, .reveal h2, .reveal h3 { font-weight: normal; text-transform: none; letter-spacing: -0.01em; }
+    .reveal h1 { font-size: 2.2em; line-height: 1.15; }
+    .reveal h2 { font-size: 1.4em; color: #e8eaf6; margin-bottom: 0.25em; }
+    .reveal section { text-align: left; }
+    .reveal section.center-slide { text-align: center; }
+
+    .tag { display: inline-block; font-family: 'Courier New', monospace; font-size: 0.45em; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent); padding: 0.3em 0.8em; border-radius: 2px; margin-bottom: 0.8em; }
+    .mono { font-family: 'Courier New', monospace; font-size: 0.75em; color: var(--muted); }
+    .accent { color: var(--accent); }
+    .accent2 { color: var(--accent2); }
+    .teal { color: var(--teal); }
+
+    .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .cols3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
+
+    .card { background: var(--surface); border: 1px solid #2d3250; border-radius: 4px; padding: 0.75em; }
+    .card h4 { font-family: 'Courier New', monospace; font-size: 0.62em; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); margin-bottom: 0.35em; }
+    .card p, .card li { font-size: 0.72em; color: #c5c8e0; line-height: 1.55; }
+    .card ul { list-style: none; padding: 0; }
+    .card li::before { content: "→ "; color: var(--accent); }
+
+    .highlight-box { background: rgba(124, 106, 247, 0.1); border-left: 3px solid var(--accent); padding: 0.7em 1.2em; margin: 0.7em 0; border-radius: 0 4px 4px 0; }
+    .highlight-box p { font-size: 0.72em; line-height: 1.6; margin: 0; font-style: italic; }
+
+    .five-w {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 0.8rem;
+    }
+    .w-item {
+      background: var(--surface);
+      border: 1px solid #2d3250;
+      border-radius: 4px;
+      padding: 1em;
+      text-align: center;
+    }
+    .w-item .letter { font-family: 'Courier New', monospace; font-size: 1.6em; font-weight: bold; display: block; margin-bottom: 0.2em; }
+    .w-item .label { font-size: 0.6em; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); display: block; }
+    .w-item w1 .letter { color: var(--accent); }
+    .w-item.w1 .letter { color: var(--accent); }
+    .w-item.w2 .letter { color: var(--accent2); }
+    .w-item.w3 .letter { color: var(--teal); }
+    .w-item.w4 .letter { color: #f7816a; }
+    .w-item.w5 .letter { color: #a8e6cf; }
+    .w-item.w6 .letter { color: #ffd3b6; }
+
+    .example-box {
+      background: #111422;
+      border: 1px solid #2d3250;
+      border-radius: 4px;
+      padding: 1em 1.2em;
+    }
+    .example-box .source { font-family: 'Courier New', monospace; font-size: 0.55em; color: var(--muted); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.5em; }
+    .example-box .headline { font-size: 0.85em; line-height: 1.5; color: #e8eaf6; }
+
+    .exercise-badge { display: inline-block; background: var(--accent2); color: #0f1117; font-family: 'Courier New', monospace; font-size: 0.5em; font-weight: bold; text-transform: uppercase; letter-spacing: 0.1em; padding: 0.3em 0.8em; border-radius: 2px; margin-bottom: 0.8em; }
+
+    .step-list { list-style: none; padding: 0; counter-reset: steps; }
+    .step-list li { counter-increment: steps; padding: 0.45em 0 0.45em 2.5em; position: relative; font-size: 0.75em; color: #c5c8e0; line-height: 1.45; border-bottom: 1px solid #1e2235; }
+    .step-list li::before { content: counter(steps); position: absolute; left: 0; top: 0.6em; font-family: 'Courier New', monospace; font-size: 0.85em; color: var(--accent); font-weight: bold; background: rgba(124,106,247,0.15); width: 1.6em; height: 1.6em; display: flex; align-items: center; justify-content: center; border-radius: 2px; }
+
+    .nav-footer { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%); display: flex; gap: 1.5rem; z-index: 100; }
+    .nav-footer a { font-family: 'Courier New', monospace; font-size: 0.75rem; color: var(--muted); text-decoration: none; border: 1px solid #2d3250; padding: 0.3rem 0.8rem; border-radius: 2px; transition: all 0.2s; }
+    .nav-footer a:hover { color: var(--accent); border-color: var(--accent); }
+    .dept-logo { position:fixed; bottom:1.5rem; left:1.5rem; z-index:100; }
+  </style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+<!-- SLIDE 1: Titolo -->
+<section class="center-slide">
+  <div class="tag">Laboratorio di Produzione Contenuti Web · Lezione 2</div>
+  <h1>Le 5W+H come<br>strumento di analisi</h1>
+  <p class="mono">Blocco 1 — Fondamenta · 3 ore</p>
+</section>
+
+<!-- SLIDE 2: Cosa impariamo oggi -->
+<section>
+  <h2>Cosa impariamo oggi</h2>
+  <div class="cols">
+    <div class="card">
+      <h4>Metodo</h4>
+      <ul>
+        <li>Le 5W+H come griglia di analisi narrativa</li>
+        <li>Come applicarla a testi giornalistici reali</li>
+        <li>Come collegare le 5W+H al concetto di frame</li>
+        <li>Come individuare cosa viene omesso</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Pratica</h4>
+      <ul>
+        <li>Analisi comparata: stesso fatto, tre testate</li>
+        <li>Identificazione dei frame attivati da parole diverse</li>
+        <li>Discussione collettiva dei risultati</li>
+      </ul>
+    </div>
+  </div>
+  <div class="highlight-box" style="margin-top:0.8rem">
+    <p>La griglia 5W+H è il ponte tra la teoria del framing (Lakoff) e la pratica dell'analisi: trasforma un testo in dati leggibili e confrontabili.</p>
+  </div>
+</section>
+
+<!-- SLIDE 3: Le 5W+H -->
+<section>
+  <h2>Le 5W+H: la griglia di analisi</h2>
+  <p style="font-size:0.8em; color:#c5c8e0; margin-bottom:0.6rem">Un framework classico (dal giornalismo alla linguistica computazionale) per scomporre qualsiasi testo narrativo nei suoi elementi invarianti</p>
+  <div class="five-w">
+    <div class="w-item w1">
+      <span class="letter">WHO</span>
+      <span class="label">Chi</span>
+      <p style="font-size:0.55em; color:#8b8fa8; margin-top:0.3em">Gli attori in campo</p>
+    </div>
+    <div class="w-item w2">
+      <span class="letter">WHAT</span>
+      <span class="label">Cosa</span>
+      <p style="font-size:0.55em; color:#8b8fa8; margin-top:0.3em">L'azione o l'evento</p>
+    </div>
+    <div class="w-item w3">
+      <span class="letter">WHEN</span>
+      <span class="label">Quando</span>
+      <p style="font-size:0.55em; color:#8b8fa8; margin-top:0.3em">Il contesto temporale</p>
+    </div>
+    <div class="w-item w4">
+      <span class="letter">WHERE</span>
+      <span class="label">Dove</span>
+      <p style="font-size:0.55em; color:#8b8fa8; margin-top:0.3em">Il contesto spaziale</p>
+    </div>
+    <div class="w-item w5">
+      <span class="letter">WHY</span>
+      <span class="label">Perché</span>
+      <p style="font-size:0.55em; color:#8b8fa8; margin-top:0.3em">Le motivazioni, l'obiettivo</p>
+    </div>
+    <div class="w-item w6">
+      <span class="letter">HOW</span>
+      <span class="label">Come</span>
+      <p style="font-size:0.55em; color:#8b8fa8; margin-top:0.3em">I mezzi, il metodo</p>
+    </div>
+  </div>
+  <p class="mono" style="margin-top:0.8rem; font-size:0.62em">Franzosi (2009): "le 5W+H sono le categorie invarianti in cui cadono tutti gli elementi di una storia"</p>
+</section>
+
+<!-- SLIDE 4: 5W+H e frame -->
+<section>
+  <h2>Dalle 5W+H al frame: come si collegano</h2>
+  <p style="font-size:0.8em; color:#c5c8e0; margin-bottom:0.6rem">Non tutte le domande hanno lo stesso peso narrativo. Il frame emerge soprattutto da tre dimensioni.</p>
+  <div class="cols">
+    <div>
+      <div class="card" style="margin-bottom:0.4rem">
+        <h4>WHO — Chi agisce, chi subisce</h4>
+        <p>Chi viene nominato per primo? Chi è soggetto dell'azione, chi oggetto? Chi è assente? La scelta dei soggetti è la prima decisione di framing.</p>
+        <p style="margin-top:0.4em; color:var(--accent2); font-size:0.88em"><em>"Migranti sbarcano"</em> vs <em>"Persone salvate"</em> — stesso evento, due WHO radicalmente diversi.</p>
+      </div>
+      <div class="card">
+        <h4>WHY — Motivazioni esplicite o implicite</h4>
+        <p>Perché succede quello che succede? Spesso il WHY è assente o implicito — e la sua assenza è già una scelta di frame. Un WHY implicito è un frame non dichiarato.</p>
+      </div>
+    </div>
+    <div>
+      <div class="card" style="margin-bottom:0.4rem">
+        <h4>HOW — I mezzi e il metodo narrati</h4>
+        <p>Come viene descritta l'azione? Quali parole descrivono il processo? Il HOW attiva spesso frame emotivi forti — è dove si concentra il vocabolario più carico.</p>
+      </div>
+      <div class="highlight-box">
+        <p>WHY + HOW insieme rivelano la <strong>logica narrativa profonda</strong>: perché la storia è raccontata così, attraverso quale interpretazione del mondo. Questa è la cornice narrativa.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 5: 5W+H applicata -->
+<section>
+  <h2>5W+H applicata: un esempio comparato</h2>
+  <p style="font-size:0.8em; color:#c5c8e0; margin-bottom:0.6rem">Stesso fatto, due testate diverse</p>
+  <div class="cols" style="gap:1rem">
+    <div>
+      <div class="example-box" style="margin-bottom:0.6rem">
+        <div class="source">Testata A</div>
+        <div class="headline">"Migranti sbarcano a Lampedusa: emergenza senza fine"</div>
+      </div>
+      <div class="card">
+        <h4>Analisi 5W+H</h4>
+        <p><span class="accent">WHO:</span> "Migranti" — categoria indistinta, soggetto attivo<br>
+        <span class="accent2">WHAT:</span> "sbarcano" — azione volontaria, invasione<br>
+        <span class="teal">WHY:</span> assente<br>
+        <strong>Frame:</strong> <em>invasione, emergenza, crisi</em></p>
+      </div>
+    </div>
+    <div>
+      <div class="example-box" style="margin-bottom:0.6rem">
+        <div class="source">Testata B</div>
+        <div class="headline">"Ottanta persone salvate nel Mediterraneo: tra loro 12 bambini"</div>
+      </div>
+      <div class="card">
+        <h4>Analisi 5W+H</h4>
+        <p><span class="accent">WHO:</span> "persone", "bambini" — umanizzati, soggetti passivi<br>
+        <span class="accent2">WHAT:</span> "salvate" — azione subita, non commessa<br>
+        <span class="teal">WHY:</span> implicito nel pericolo<br>
+        <strong>Frame:</strong> <em>umanità, solidarietà, soccorso</em></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 6: Come si usa in pratica -->
+<section>
+  <h2>Come si applica la griglia in pratica</h2>
+  <div class="cols">
+    <div>
+      <ol class="step-list">
+        <li><strong>Leggi il testo una prima volta</strong> senza prendere appunti. Qual è la prima impressione? Che tono emotivo hai percepito?</li>
+        <li><strong>Rileggi e compila la griglia</strong>: per ogni elemento 5W+H, trascrivi le parole esatte usate nel testo — non parafrasare.</li>
+        <li><strong>Nota le assenze:</strong> quali domande il testo non risponde? Un WHY mancante è un frame implicito.</li>
+        <li><strong>Identifica le parole più cariche</strong> emotivamente. A quale circuito cognitivo si rivolgono?</li>
+        <li><strong>Scrivi il frame in una frase:</strong> "Questo testo racconta X come se fosse Y, attivando il frame di Z."</li>
+      </ol>
+    </div>
+    <div>
+      <div class="card" style="margin-bottom:0.4rem">
+        <h4>Domande guida durante l'analisi</h4>
+        <ul>
+          <li>Chi viene nominato per primo?</li>
+          <li>Quali verbi descrivono le azioni?</li>
+          <li>Cosa viene omesso o minimizzato?</li>
+          <li>Quale "morale" emerge dalla storia?</li>
+          <li>Qual è il tono emotivo dominante?</li>
+        </ul>
+      </div>
+      <div class="highlight-box">
+        <p>Non cercare il frame "giusto" — cerca il frame <em>attivato</em>. Il tuo obiettivo è descrivere quello che il testo fa al lettore, non giudicarlo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 7: Esercitazione -->
+<section>
+  <div class="exercise-badge">Esercitazione in aula</div>
+  <h2>Stesso fatto, tre testate</h2>
+  <div class="cols">
+    <div>
+      <ol class="step-list">
+        <li>Scegliere un fatto di cronaca recente trattato da più testate</li>
+        <li>Raccogliere titoli e primo paragrafo di 3 contenuti diversi</li>
+        <li>Applicare la griglia 5W+H a ciascun contenuto — usando le parole esatte del testo</li>
+        <li>Identificare il frame attivato da ciascuna testata in una frase</li>
+        <li>Confrontare i risultati: cosa cambia? Cosa resta uguale? Cosa manca in tutti e tre?</li>
+        <li>Presentare l'analisi: 5 minuti per gruppo</li>
+      </ol>
+    </div>
+    <div>
+      <div class="card" style="margin-bottom:0.4rem">
+        <h4>Fonti suggerite</h4>
+        <p>Il Post · Corriere della Sera · La Repubblica · Il Giornale · TG1 online · Open</p>
+      </div>
+      <div class="card" style="margin-bottom:0.4rem">
+        <h4>Output del gruppo</h4>
+        <p>Una tabella con: le 5W+H per ciascun contenuto, il frame identificato, le divergenze principali, il punto di vista assente.</p>
+      </div>
+      <div class="card">
+        <h4>Tempo</h4>
+        <p>40 minuti di analisi · 15 minuti di presentazione per gruppo</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Recap -->
+<section class="center-slide">
+  <h2>Il toolkit di oggi</h2>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; text-align:left; max-width:600px; margin:0 auto">
+    <div class="card">
+      <h4>Metodo</h4>
+      <ul>
+        <li>Griglia 5W+H</li>
+        <li>WHO + WHY + HOW come chiavi di frame</li>
+        <li>Analisi delle assenze</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Pratica</h4>
+      <ul>
+        <li>Analisi comparata su testi reali</li>
+        <li>Identificazione del frame in una frase</li>
+        <li>Lettura delle omissioni come scelte narrative</li>
+      </ul>
+    </div>
+  </div>
+  <p class="mono" style="margin-top:2rem">Prossima lezione → L'AI come strumento di analisi e i formati del progetto</p>
+</section>
+
+</div>
+</div>
+
+<div class="nav-footer">
+  <a href="lezione-01.html">← Lezione 1</a>
+  <a href="../index.html">Indice</a>
+  <a href="lezione-03.html">Lezione 3 →</a>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.js"></script>
+<script>
+  Reveal.initialize({ hash: true, transition: 'fade', transitionSpeed: 'fast', progress: true, controls: true, center: false, width: 1100, height: 700, margin: 0.04, slideNumber: 'c/t', plugins: [] });
+</script>
+
+<div class="dept-logo"><img src="../logo-DISCUI-new2white-1024x308.png" alt="DISCUI" style="width:260px; opacity:0.75"></div>
+</body>
+</html>
