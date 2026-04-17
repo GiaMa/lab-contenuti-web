@@ -8,10 +8,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/theme/black.min.css">
   <style>
     :root { --accent:#7c6af7; --accent2:#f7c948; --teal:#4ecdc4; --muted:#8b8fa8; --surface:#1e2235; }
-    .reveal { font-family:'Georgia',serif; font-size:30px; }
+    .reveal { font-family:'Georgia',serif; font-size:26px; }
     .reveal h1,.reveal h2,.reveal h3 { font-weight:normal; text-transform:none; letter-spacing:-0.01em; }
     .reveal h1 { font-size:2.2em; line-height:1.15; }
-    .reveal h2 { font-size:1.4em; color:#e8eaf6; margin-bottom:0.25em; }
+    .reveal h2 { font-size:1.4em; color:#e8eaf6; margin-bottom:0.2em; }
     .reveal section { text-align:left; }
     .reveal section.center-slide { text-align:center; }
     .tag { display:inline-block; font-family:'Courier New',monospace; font-size:0.45em; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent); border:1px solid var(--accent); padding:0.3em 0.8em; border-radius:2px; margin-bottom:0.8em; }
@@ -19,48 +19,48 @@
     .accent { color:var(--accent); }
     .accent2 { color:var(--accent2); }
     .teal { color:var(--teal); }
-    .cols { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; }
-    .cols3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:1rem; }
-    .card { background:var(--surface); border:1px solid #2d3250; border-radius:4px; padding:0.75em; }
-    .card h4 { font-family:'Courier New',monospace; font-size:0.62em; text-transform:uppercase; letter-spacing:0.12em; color:var(--accent); margin-bottom:0.35em; }
-    .card p,.card li { font-size:0.72em; color:#c5c8e0; line-height:1.55; }
+    .cols { display:grid; grid-template-columns:1fr 1fr; gap:0.9rem; }
+    .cols3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.7rem; }
+    .card { background:var(--surface); border:1px solid #2d3250; border-radius:4px; padding:0.6em; }
+    .card h4 { font-family:'Courier New',monospace; font-size:0.62em; text-transform:uppercase; letter-spacing:0.12em; color:var(--accent); margin-bottom:0.25em; }
+    .card p,.card li { font-size:0.72em; color:#c5c8e0; line-height:1.45; }
     .card ul { list-style:none; padding:0; }
     .card li::before { content:"→ "; color:var(--accent); }
-    .highlight-box { background:rgba(124,106,247,0.1); border-left:3px solid var(--accent); padding:0.7em 1.2em; margin:0.7em 0; border-radius:0 4px 4px 0; }
-    .highlight-box p { font-size:0.72em; line-height:1.6; margin:0; font-style:italic; }
-    .warning-box { background:rgba(247,201,72,0.08); border-left:3px solid var(--accent2); padding:0.7em 1.2em; margin:0.5em 0; border-radius:0 4px 4px 0; }
-    .warning-box p { font-size:0.72em; line-height:1.55; margin:0; color:#e8eaf6; }
+    .highlight-box { background:rgba(124,106,247,0.1); border-left:3px solid var(--accent); padding:0.5em 1em; margin:0.45em 0; border-radius:0 4px 4px 0; }
+    .highlight-box p { font-size:0.72em; line-height:1.5; margin:0; font-style:italic; }
+    .warning-box { background:rgba(247,201,72,0.08); border-left:3px solid var(--accent2); padding:0.5em 1em; margin:0.4em 0; border-radius:0 4px 4px 0; }
+    .warning-box p { font-size:0.72em; line-height:1.45; margin:0; color:#e8eaf6; }
 
     .prompt-box {
       background:#0d0f1a;
       border:1px solid #2d3250;
       border-radius:4px;
-      padding:1em 1.2em;
+      padding:0.75em 1em;
       font-family:'Courier New',monospace;
-      font-size:0.68em;
-      line-height:1.7;
+      font-size:0.66em;
+      line-height:1.55;
       color:#c5c8e0;
     }
-    .prompt-box .prompt-label { font-size:0.7em; text-transform:uppercase; letter-spacing:0.12em; color:var(--teal); margin-bottom:0.5em; display:block; }
+    .prompt-box .prompt-label { font-size:0.7em; text-transform:uppercase; letter-spacing:0.12em; color:var(--teal); margin-bottom:0.4em; display:block; }
     .prompt-highlight { color:var(--accent2); }
 
     .step-list { list-style:none; padding:0; counter-reset:steps; }
-    .step-list li { counter-increment:steps; padding:0.45em 0 0.45em 2.5em; position:relative; font-size:0.75em; color:#c5c8e0; line-height:1.45; border-bottom:1px solid #1e2235; }
-    .step-list li::before { content:counter(steps); position:absolute; left:0; top:0.6em; font-family:'Courier New',monospace; font-size:0.85em; color:var(--accent); font-weight:bold; background:rgba(124,106,247,0.15); width:1.6em; height:1.6em; display:flex; align-items:center; justify-content:center; border-radius:2px; }
+    .step-list li { counter-increment:steps; padding:0.35em 0 0.35em 2.4em; position:relative; font-size:0.72em; color:#c5c8e0; line-height:1.4; border-bottom:1px solid #1e2235; }
+    .step-list li::before { content:counter(steps); position:absolute; left:0; top:0.5em; font-family:'Courier New',monospace; font-size:0.85em; color:var(--accent); font-weight:bold; background:rgba(124,106,247,0.15); width:1.6em; height:1.6em; display:flex; align-items:center; justify-content:center; border-radius:2px; }
 
-    .exercise-badge { display:inline-block; background:var(--accent2); color:#0f1117; font-family:'Courier New',monospace; font-size:0.5em; font-weight:bold; text-transform:uppercase; letter-spacing:0.1em; padding:0.3em 0.8em; border-radius:2px; margin-bottom:0.8em; }
+    .exercise-badge { display:inline-block; background:var(--accent2); color:#0f1117; font-family:'Courier New',monospace; font-size:0.5em; font-weight:bold; text-transform:uppercase; letter-spacing:0.1em; padding:0.3em 0.8em; border-radius:2px; margin-bottom:0.6em; }
 
-    .format-card { border:1px solid #2d3250; border-radius:4px; padding:0.9em; height:100%; }
+    .format-card { border:1px solid #2d3250; border-radius:4px; padding:0.7em; height:100%; }
     .format-card.longform { border-top:3px solid var(--accent); background:rgba(124,106,247,0.05); }
-    .format-card h4 { font-family:'Courier New',monospace; font-size:0.62em; text-transform:uppercase; letter-spacing:0.12em; margin-bottom:0.35em; }
+    .format-card h4 { font-family:'Courier New',monospace; font-size:0.62em; text-transform:uppercase; letter-spacing:0.12em; margin-bottom:0.25em; }
     .format-card.longform h4 { color:var(--accent); }
-    .format-card .format-example { font-style:italic; font-size:0.68em; color:var(--muted); margin-top:0.4em; }
-    .format-card p,.format-card li { font-size:0.72em; color:#c5c8e0; line-height:1.5; }
+    .format-card .format-example { font-style:italic; font-size:0.66em; color:var(--muted); margin-top:0.3em; }
+    .format-card p,.format-card li { font-size:0.72em; color:#c5c8e0; line-height:1.45; }
     .format-card ul { list-style:none; padding:0; }
     .format-card li::before { content:"→ "; color:var(--muted); }
 
-    .project-box { background:rgba(247,201,72,0.08); border:1px solid rgba(247,201,72,0.3); border-radius:4px; padding:1.2em; }
-    .project-box h3 { color:var(--accent2); font-size:0.85em; margin-bottom:0.8em; font-family:'Courier New',monospace; text-transform:uppercase; letter-spacing:0.12em; }
+    .project-box { background:rgba(247,201,72,0.08); border:1px solid rgba(247,201,72,0.3); border-radius:4px; padding:0.9em; }
+    .project-box h3 { color:var(--accent2); font-size:0.85em; margin-bottom:0.6em; font-family:'Courier New',monospace; text-transform:uppercase; letter-spacing:0.12em; }
 
     .section-divider {
       font-family:'Courier New',monospace;
@@ -72,7 +72,7 @@
       display:inline-block;
       padding:0.3em 0.8em;
       border-radius:2px;
-      margin-bottom:0.6em;
+      margin-bottom:0.5em;
     }
 
     .nav-footer { position:fixed; bottom:1.5rem; left:50%; transform:translateX(-50%); display:flex; gap:1.5rem; z-index:100; }
@@ -259,15 +259,13 @@
       <p class="format-example">Strumenti: NotebookLM, Gemini</p>
     </div>
   </div>
-  <div class="highlight-box" style="margin-top:0.5rem">
-    <p>Il formato si sceglie definitivamente alla lezione 7, dopo aver costruito la scaletta. Il formato deve servire la cornice, non il contrario.</p>
-  </div>
+
 </section>
 
 <!-- SLIDE 7: Scrivere per il web -->
 <section>
   <h2>Scrivere per il web: le regole cambiano</h2>
-  <p style="font-size:0.8em; color:#c5c8e0; margin-bottom:0.6rem">Il lettore web non legge dall'inizio alla fine: scansiona, decide in frazioni di secondo se continuare.</p>
+  <p style="font-size:0.8em; color:#c5c8e0; margin-bottom:0.35rem">Il lettore web non legge dall'inizio alla fine: scansiona, decide in frazioni di secondo se continuare.</p>
   <div class="cols">
     <div>
       <div class="card" style="margin-bottom:0.4rem">
@@ -303,43 +301,236 @@
   </div>
 </section>
 
-<!-- SLIDE 8: Distribuzione + Renaissance -->
+<!-- SLIDE 8: Articolo di approfondimento nel digitale italiano -->
 <section>
-  <h2>Distribuzione, newsletter e podcast</h2>
+  <h2>Il giornalismo di approfondimento digitale in Italia</h2>
+  <p style="font-size:0.8em; color:#c5c8e0; margin-bottom:0.35rem">Non compete sulla velocità: compete sulla profondità, sul contesto e sulla durata. Un'inchiesta ben costruita rimane rilevante per mesi.</p>
   <div class="cols">
     <div>
       <div class="card" style="margin-bottom:0.4rem">
-        <h4>Dove pubblichi è una scelta editoriale</h4>
+        <h4>Fact-checking e verifica</h4>
         <ul>
-          <li><strong>Social media:</strong> grande reach, ma l'algoritmo decide chi vede cosa — e premia i frame emotivi</li>
-          <li><strong>Substack / email:</strong> il lettore ha scelto di iscriversi — relazione diretta, nessun algoritmo</li>
-          <li><strong>Web indicizzato:</strong> il lettore cerca attivamente — attenzione alta, tolleranza per la complessità</li>
+          <li><span class="accent">Pagella Politica</span> (2012) — unico sito italiano dedicato alla verifica delle dichiarazioni politiche; membro IFCN; fact-checker certificato per Meta</li>
+          <li><span class="accent2">Facta.news</span> (2020) — debunking su salute, scienza, bufale virali; fact-checker ufficiale per Meta e TikTok</li>
+          <li><span class="teal">Open</span> (Mentana, 2018) — informazione generale con unità di verifica; forte componente video e social</li>
         </ul>
       </div>
       <div class="card">
-        <h4>Newsletter: la fuga dagli algoritmi</h4>
-        <p>Con il crollo della portata organica sui social, molti giornalisti hanno scelto l'email come canale diretto. Substack (2017) ha reso il modello di abbonamento accessibile a chiunque. È un rapporto quasi epistolare con il lettore.</p>
+        <h4>Data journalism</h4>
+        <ul>
+          <li><span class="accent">Dataninja</span> (Donata Columbro) — visualizzazioni dati e formazione; newsletter <em>Ti spiego il dato</em></li>
+          <li><span class="accent2">Il Sole 24 Ore Dataroom</span> (Milena Gabanelli) — uno dei format investigativi italiani più seguiti</li>
+          <li><span class="teal">Openpolis</span> — dati su PA, atti parlamentari, fondi pubblici</li>
+        </ul>
       </div>
     </div>
     <div>
       <div class="card" style="margin-bottom:0.4rem">
-        <h4>Podcast: l'intimità dell'audio</h4>
-        <p>Il podcast ha la fidelizzazione più alta del digitale — chi ascolta lo fa in un momento dedicato. La voce crea prossimità impossibile con il testo scritto. NotebookLM rende accessibile la produzione audio partendo direttamente dai documenti di ricerca.</p>
+        <h4>Slow journalism</h4>
+        <ul>
+          <li><span class="accent">Slow News</span> (Puliafito/Nalbone) — principale progetto italiano di giornalismo lento; include la newsletter <em>Wolf</em> a pagamento</li>
+          <li><span class="accent2">Veleno</span> (Pablo Trincia, 2017) — inchiesta seriale che ha ridefinito il giornalismo narrativo italiano; poi libro Einaudi e docuserie Amazon</li>
+          <li><span class="teal">Internazionale</span> — rassegna internazionale + festival annuale a Ferrara</li>
+        </ul>
       </div>
       <div class="highlight-box">
-        <p>Esempi italiani: <span class="accent">Scomodo</span>, <span class="accent2">Jacobin Italia</span>, <span class="teal">Il Tascabile</span> per le newsletter; <span class="accent">Chora Media</span>, <span class="teal">Il Post Podcast</span> per l'audio.</p>
+        <p>Il SEO favorisce i contenuti approfonditi: la lunghezza e la qualità portano traffico organico nel tempo, senza dipendere dall'algoritmo dei social.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SLIDE 9: Il progetto finale -->
+<!-- SLIDE 9: La newsletter in Italia -->
+<section>
+  <h2>La newsletter in Italia: il modello Substack</h2>
+  <p style="font-size:0.8em; color:#c5c8e0; margin-bottom:0.35rem">Substack (2017): il lettore paga direttamente l'autore. La piattaforma trattiene il 10%, il 90% va a chi scrive. Oltre 5 milioni di abbonamenti paganti a livello globale (2025).</p>
+  <div class="cols">
+    <div>
+      <div class="card" style="margin-bottom:0.4rem">
+        <h4>Principali newsletter italiane</h4>
+        <ul>
+          <li><span class="accent">Vale tutto</span> — Selvaggia Lucarelli · 150.000+ iscritti · cronaca e opinione · prima newsletter italiana per abbonamenti paganti su Substack</li>
+          <li><span class="accent2">Appunti</span> — Stefano Feltri (ex direttore di Domani) · politica ed economia · unica non anglofona tra le 25 migliori newsletter di giornalismo di Substack</li>
+          <li><span class="teal">Ellissi</span> — Valerio Bassan · 18.000+ iscritti · media digitali e economia del web · gratuita</li>
+          <li><span class="accent">Guerre di Rete</span> — Carola Frediani · dal 2018 · cybersecurity e diritti digitali · gratuita</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="card" style="margin-bottom:0.4rem">
+        <h4>Perché la newsletter funziona per l'approfondimento</h4>
+        <ul>
+          <li>Nessun algoritmo intermedio: arriva nella casella di chi ha scelto di riceverla</li>
+          <li>Relazione parasociale con il lettore: tono diretto, quasi epistolare</li>
+          <li>Modello economico diretto: abbonamento, non pubblicità</li>
+          <li>Frequenza continuativa: la cornice narrativa si costruisce numero dopo numero</li>
+        </ul>
+      </div>
+      <div class="highlight-box">
+        <p>Critica da tenere a mente: Substack ha politiche di moderazione molto permissive — ospita anche contenuti disinformativi e di estrema destra. Scegliere la piattaforma è già una scelta editoriale.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 10: Il podcast in Italia -->
+<section>
+  <h2>Il podcast in Italia: un mercato in crescita</h2>
+  <p style="font-size:0.8em; color:#c5c8e0; margin-bottom:0.35rem">18 milioni di ascoltatori nel 2025 (+75% rispetto al 2018). Durata media di ascolto: 28 minuti. Il 71% ascolta mentre fa altro.</p>
+  <div class="cols">
+    <div>
+      <div class="card" style="margin-bottom:0.4rem">
+        <h4>Chi ascolta</h4>
+        <ul>
+          <li>50% donne, 50% uomini · fascia 25–54 anni</li>
+          <li>46% dei fruitori è laureato</li>
+          <li>La scelta è guidata dall'interesse per il tema (57%), non dalla notorietà dello speaker (28%)</li>
+          <li>Piattaforme: Spotify (dominante), Apple Podcasts, Audible, Chora Media</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Top Spotify Italia — i generi che dominano</h4>
+        <ul>
+          <li><span class="accent">True crime</span> — Elisa True Crime #1 · Indagini (Nazzi) #2</li>
+          <li><span class="accent2">Talk &amp; intrattenimento</span> — Passa dal BSMT #4 · One More Time #5 · La Zanzara #6 · Pulp Podcast #9</li>
+          <li><span class="teal">Divulgazione</span> — Alessandro Barbero #7 (storia)</li>
+          <li><span class="teal">Intrattenimento/divulgazione</span> — Supernova #8 (tech &amp; società, formato ibrido)</li>
+          <li><span class="muted" style="color:var(--muted)">Giornalismo</span> — Stories (Cecilia Sala) #3 · The Essential #10</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="card" style="margin-bottom:0.4rem">
+        <h4>Cosa ci dice la classifica</h4>
+        <ul>
+          <li>Il giornalismo è una nicchia: solo 2 titoli su 10 vengono da testate</li>
+          <li>La voce <em>racconta</em> prima ancora di informare: true crime e talk battono i reportage</li>
+          <li>L'ascoltatore cerca un rapporto personale con chi parla, non solo contenuto</li>
+          <li>Il formato lungo funziona anche fuori dal giornalismo — la scelta del tema è decisiva</li>
+        </ul>
+      </div>
+      <div class="highlight-box">
+        <p><strong>NotebookLM</strong> rende la produzione audio accessibile a chi non ha attrezzatura: genera audio parlato a partire dai documenti di ricerca caricati, partendo direttamente dal lavoro di analisi del gruppo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Formazione dei gruppi -->
+<section>
+  <div class="exercise-badge">Attività</div>
+  <h2>Formazione dei gruppi</h2>
+  <div class="cols">
+    <div>
+      <div class="card">
+        <h4>Composizione</h4>
+        <p>Gruppi da <strong>2–3 persone</strong>. La scelta è libera.</p>
+        <p style="margin-top:0.4em">Ogni gruppo sceglie un <strong>nome</strong> — sarà usato per identificare il gruppo su Blended e nella relazione finale.</p>
+      </div>
+    </div>
+    <div>
+      <div class="card">
+        <h4>Ruoli da indicare nella relazione</h4>
+        <ul>
+          <li><span class="accent">Coordinatore</span> — gestisce le scadenze, coordina il lavoro del gruppo e tiene i contatti con la docente</li>
+          <li><span class="accent2">Ricercatore</span> — raccoglie e analizza le fonti, applica la griglia 5W+H, mappa le narrative</li>
+          <li><span class="teal">Produttore</span> — cura la scrittura, l'impaginazione e gli elementi visivi del contenuto finale</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Esercitazione di gruppo -->
+<section>
+  <div class="exercise-badge">Esercitazione di gruppo</div>
+  <h2>5W+H in pratica — lezioni 3, 4 e restituzione alla 5</h2>
+  <div class="cols">
+    <div>
+      <div class="card" style="margin-bottom:0.4rem">
+        <h4>Il compito</h4>
+        <p>Ogni gruppo sceglie <strong>tre contenuti</strong> su un tema politico o sociale — uno per ciascun formato:</p>
+        <ul>
+          <li><span class="accent">Un articolo</span> di approfondimento (testata a scelta)</li>
+          <li><span class="accent2">Una newsletter</span> (Substack o altra piattaforma)</li>
+          <li><span class="teal">Un podcast</span> (episodio singolo)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Per ciascun contenuto</h4>
+        <ul>
+          <li>Applicate la griglia 5W+H usando le parole esatte del testo</li>
+          <li>Identificate le parole che attivano un frame specifico</li>
+          <li>Scrivete la cornice in una frase: <em>"Questo contenuto racconta X come se fosse Y, attivando il frame di Z."</em></li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="card" style="margin-bottom:0.4rem">
+        <h4>Tempi</h4>
+        <ul>
+          <li><span class="accent">Lezione 3</span> — inizio lavoro in aula: scelta dei contenuti e prima analisi</li>
+          <li><span class="accent2">Lezione 4</span> — completamento dell'analisi, revisione con Gemini</li>
+          <li><span class="teal">Lezione 5</span> — restituzione: dibattito in aula sui frame emersi</li>
+        </ul>
+      </div>
+      <div class="card" style="margin-bottom:0.4rem">
+        <h4>Potete usare Gemini</h4>
+        <p style="font-family:'Courier New',monospace; font-size:0.66em; color:#c5c8e0; background:#0f1117; padding:0.5em 0.7em; border-radius:3px; line-height:1.55; margin-top:0.3em">Applica la griglia 5W+H a questo testo. Per ogni elemento indica le parole chiave usate. Poi, combinando Why e How, identifica la cornice narrativa in una frase.</p>
+      </div>
+      <div class="highlight-box">
+        <p>Documento caricato su <strong>Blended</strong> prima della lezione 5. Slide successiva: cosa deve contenere.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Cosa consegnare su Blended -->
+<section>
+  <div class="exercise-badge">Consegna</div>
+  <h2>Cosa caricare su Blended — prima della lezione 5</h2>
+  <div class="cols">
+    <div>
+      <div class="card" style="margin-bottom:0.4rem">
+        <h4>Un documento per gruppo con</h4>
+        <ul>
+          <li>Nome del gruppo e componenti</li>
+          <li>Tema scelto per l'analisi</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Per ciascuno dei tre contenuti analizzati</h4>
+        <ul>
+          <li>Titolo, fonte e formato (articolo / newsletter / podcast)</li>
+          <li>Griglia 5W+H compilata con le parole esatte del testo</li>
+          <li>Le parole o espressioni che attivano il frame</li>
+          <li>La cornice narrativa in una frase: <em>"Questo contenuto racconta X come se fosse Y, attivando il frame di Z."</em></li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="card" style="margin-bottom:0.4rem">
+        <h4>Formato</h4>
+        <ul>
+          <li>Documento di testo (Google Docs o .pdf)</li>
+          <li>Struttura libera, purché i tre contenuti siano chiaramente separati</li>
+          <li>Potete allegare screenshot o estratti del testo analizzato</li>
+        </ul>
+      </div>
+      <div class="highlight-box">
+        <p>Lo spazio di consegna è su <strong>Blended</strong>, nella sezione predisposta per questa esercitazione. Alla lezione 5 ogni gruppo presenta i tre frame: parte da lì il dibattito in aula.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Il progetto finale -->
 <section>
   <div class="project-box">
     <h3>Il progetto finale</h3>
     <div class="cols">
       <div>
-        <p style="font-size:0.78em; color:#e8eaf6; line-height:1.6; margin-bottom:0.8rem">Ogni gruppo (3 persone) produce un <strong>contenuto lungo per il web</strong> su un tema politico/sociale a scelta.</p>
+        <p style="font-size:0.78em; color:#e8eaf6; line-height:1.45; margin-bottom:0.35rem">Ogni gruppo produce un <strong>contenuto lungo per il web</strong> su un tema politico/sociale a scelta.</p>
         <div class="card">
           <h4>Formato a scelta</h4>
           <ul>
@@ -369,77 +560,10 @@
   </div>
 </section>
 
-<!-- SLIDE 10: Formazione dei gruppi -->
-<section>
-  <div class="exercise-badge">Attività</div>
-  <h2>Formazione dei gruppi</h2>
-  <div class="cols">
-    <div>
-      <div class="card" style="margin-bottom:0.4rem">
-        <h4>Composizione</h4>
-        <p>3–4 gruppi da 3 persone ciascuno. Cercare eterogeneità: mix di competenze e interessi tematici.</p>
-      </div>
-      <div class="card">
-        <h4>Ruoli suggeriti</h4>
-        <ul>
-          <li>Coordinatore (gestisce timeline e checkpoint)</li>
-          <li>Ricercatore (fonti e analisi)</li>
-          <li>Produttore (scrittura e visual)</li>
-        </ul>
-      </div>
-    </div>
-    <div>
-      <ol class="step-list">
-        <li>Formate i gruppi (10 min)</li>
-        <li>Brainstorm: 3 temi possibili per gruppo</li>
-        <li>Discussione collettiva: i temi sono diversi? Si sovrappongono?</li>
-        <li>Scelta preliminare del tema (da confermare alla lezione 4)</li>
-        <li>Scelta del formato (da confermare alla lezione 7)</li>
-      </ol>
-    </div>
-  </div>
-</section>
-
-<!-- SLIDE 11: Esercitazione individuale -->
-<section>
-  <div class="exercise-badge">Esercitazione individuale</div>
-  <h2>5W+H in pratica — da consegnare alla lezione 4</h2>
-  <div class="cols">
-    <div>
-      <ol class="step-list">
-        <li>Scegliete un contenuto che seguite abitualmente: un articolo, una newsletter, un podcast, un reportage. Deve essere su un tema politico o sociale.</li>
-        <li>Applicate la griglia 5W+H: chi agisce, cosa succede, quando, dove, perché, come. Usate le parole esatte del testo.</li>
-        <li>Identificate le parole chiave che attivano un frame specifico.</li>
-        <li>Combinate <span class="accent2">Why</span> e <span class="accent">How</span>: insieme rivelano la logica narrativa profonda. Questa è la cornice del contenuto.</li>
-        <li>Scrivete la cornice in una frase: <em>"Questo contenuto racconta X come se fosse Y, attivando il frame di Z."</em></li>
-      </ol>
-    </div>
-    <div>
-      <div class="card" style="margin-bottom:0.4rem">
-        <h4>Formato di consegna</h4>
-        <ul>
-          <li>Documento di testo (max 1 pagina)</li>
-          <li>Titolo e fonte del contenuto scelto</li>
-          <li>Griglia 5W+H compilata</li>
-          <li>Cornice narrativa in una frase</li>
-        </ul>
-      </div>
-      <div class="card" style="margin-bottom:0.4rem">
-        <h4>Potete usare Gemini</h4>
-        <p style="margin-bottom:0.4em">Incollate il testo e usate questo prompt:</p>
-        <p style="font-family:'Courier New',monospace; font-size:0.68em; color:#c5c8e0; background:#0f1117; padding:0.5em 0.7em; border-radius:3px; line-height:1.6">Applica la griglia 5W+H a questo testo. Per ogni elemento indica le parole chiave usate. Poi, combinando Why e How, identifica la cornice narrativa in una frase.</p>
-      </div>
-      <div class="highlight-box">
-        <p><strong>Caricato su Moodle entro l'inizio della lezione 4.</strong> Ne discutiamo in aula.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- Recap Blocco 1 -->
 <section class="center-slide">
   <h2>Fine del Blocco 1 — Fondamenta</h2>
-  <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:1rem; text-align:left; max-width:800px; margin:1rem auto">
+  <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.7rem; text-align:left; max-width:800px; margin:0.6rem auto">
     <div class="card">
       <h4>Lezione 1</h4>
       <ul>
@@ -465,7 +589,7 @@
       </ul>
     </div>
   </div>
-  <p class="mono" style="margin-top:2rem">Prossima lezione → Scelta del tema e mappatura delle fonti</p>
+  <p class="mono" style="margin-top:1.2rem">Prossima lezione → Scelta del tema e mappatura delle fonti</p>
 </section>
 
 </div>
@@ -474,7 +598,7 @@
 <div class="nav-footer">
   <a href="lezione-02.html">← Lezione 2</a>
   <a href="../index.html">Indice</a>
-  
+  <a href="lezione-04.html">Lezione 4 →</a>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.js"></script>
